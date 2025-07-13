@@ -19,7 +19,7 @@ def save_data(data):
 
 @app.route("/prediction", methods=["GET"])
 def get_predictions():
-    with open("mock_data.json", "r") as f:
+    with open("backend/data/data.json", "r") as f:
         data = json.load(f)
 
     result = []
@@ -108,11 +108,13 @@ def update_daily_stock():
         return jsonify({"message": f"Updated stock for {item_no} to {stock} on {date}"}), 200
     else:
         return jsonify({"error": "Item not found"}), 404
-    
-if __name__ == "__main__":
-    print("Smart Inventory Tracker backend is starting...")
-    app.run(debug=True)
 
 @app.route("/")
 def home():
     return "Smart Inventory Tracker API is running!"
+  
+if __name__ == "__main__":
+    print("Smart Inventory Tracker backend is starting...")
+    app.run(debug=True)
+
+
